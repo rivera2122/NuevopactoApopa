@@ -14,17 +14,54 @@
     "music": "https://www.youtube.com/@nuevopactoapopa"
   },
   "schedule": [
-    { "day": "Martes", "time": "6:30 PM", "name": "Culto" },
-    { "day": "Miércoles", "time": "4:00 PM", "name": "Oración" },
-    { "day": "Jueves", "time": "7:00 PM", "name": "Culto" },
-    { "day": "Sábado", "time": "6:00 AM", "name": "Oración" },
-    { "day": "Sábado", "time": "", "name": "Culto de jóvenes" },
-    { "day": "Sábado", "time": "", "name": "Reunión de damas" },
-    { "day": "Domingo", "time": "9:00 AM", "name": "Culto dominical" },
-    { "day": "Domingo", "time": "4:00 PM", "name": "Culto dominical" }
+    {
+      "day": "Martes",
+      "time": "6:30 PM",
+      "name": "Culto"
+    },
+    {
+      "day": "Miércoles",
+      "time": "4:00 PM",
+      "name": "Oración"
+    },
+    {
+      "day": "Jueves",
+      "time": "7:00 PM",
+      "name": "Culto"
+    },
+    {
+      "day": "Sábado",
+      "time": "6:00 AM",
+      "name": "Oración"
+    },
+    {
+      "day": "Sábado",
+      "time": "",
+      "name": "Culto de jóvenes"
+    },
+    {
+      "day": "Sábado",
+      "time": "",
+      "name": "Reunión de damas"
+    },
+    {
+      "day": "Domingo",
+      "time": "9:00 AM",
+      "name": "Culto dominical"
+    },
+    {
+      "day": "Domingo",
+      "time": "4:00 PM",
+      "name": "Culto dominical"
+    }
   ],
   "events": [
-    { "date": "2026-12-05", "time": "", "title": "Noche de adoración", "desc": "Jóvenes Nuevo Pacto Apopa" }
+    {
+      "date": "2026-12-05",
+      "time": "",
+      "title": "Noche de adoración",
+      "desc": "Jóvenes Nuevo Pacto Apopa"
+    }
   ],
   "message": {
     "title": "Culto dominical",
@@ -34,15 +71,43 @@
     "url": "https://www.facebook.com/NuevoPactoApopa"
   },
   "photos": [
-    { "src": "images/congregacion.jpg", "alt": "La congregación de Nuevo Pacto Apopa reunida en el templo" },
-    { "src": "images/alabanza.jpg", "alt": "El equipo de alabanza durante el culto" },
-    { "src": "images/predicacion.jpg", "alt": "Predicación de la Palabra" },
-    { "src": "images/biblia.jpg", "alt": "Lectura de la Biblia en el culto" }
+    {
+      "src": "images/congregacion.jpg",
+      "alt": "La congregación de Nuevo Pacto Apopa reunida en el templo"
+    },
+    {
+      "src": "images/alabanza.jpg",
+      "alt": "El equipo de alabanza durante el culto"
+    },
+    {
+      "src": "images/predicacion.jpg",
+      "alt": "Predicación de la Palabra"
+    },
+    {
+      "src": "images/biblia.jpg",
+      "alt": "Lectura de la Biblia en el culto"
+    },
+    {
+      "src": "images/portada-1795406484977-wfzs.jpg",
+      "alt": ""
+    }
   ],
   "gallery": [
-    { "src": "images/congregacion.jpg", "alt": "Nuestra familia de Nuevo Pacto Apopa" },
-    { "src": "images/alabanza.jpg", "alt": "Adorando juntos" },
-    { "src": "images/biblia.jpg", "alt": "Creciendo en la Palabra" },
-    { "src": "images/predicacion.jpg", "alt": "Escuchando la Palabra de Dios" }
+    {
+      "src": "images/congregacion.jpg",
+      "alt": "Nuestra familia de Nuevo Pacto Apopa"
+    },
+    {
+      "src": "images/alabanza.jpg",
+      "alt": "Adorando juntos"
+    },
+    {
+      "src": "images/biblia.jpg",
+      "alt": "Creciendo en la Palabra"
+    },
+    {
+      "src": "images/predicacion.jpg",
+      "alt": "Escuchando la Palabra de Dios"
+    }
   ]
 }
