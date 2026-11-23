@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Nuevo Pacto Apopa</title>
+<meta name="theme-color" content="#0b2a78">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="admin">
+  <div class="admin-top">
+    <div class="wrap">
+      <h1>Admin<small>Nuevo Pacto Apopa</small></h1>
+      <div class="acts">
+        <span class="status" id="aStatus"></span>
+        <a class="btn btn-ghost" href="../">Ver sitio</a>
+        <button class="btn btn-ghost" id="aLogout" type="button" hidden>Salir</button>
+        <button class="btn btn-gold" id="aSave" type="button" disabled hidden>Guardar y publicar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="login" id="aLogin">
+    <p class="hint" id="loginLoading">Cargando…</p>
+
+    <!-- Entrada: solo contraseña -->
+    <form class="panel" id="pwForm" hidden>
+      <h2>Entrar</h2>
+      <p>Escribe la contraseña de administración.</p>
+      <div class="field"><label for="pPass">Contraseña</label><input id="pPass" type="password" autocomplete="current-password" required></div>
+      <label class="chk" for="pRemember"><input type="checkbox" id="pRemember" checked> Recordarme en este dispositivo</label>
+      <p class="err" id="pwErr" hidden></p>
+      <button class="btn btn-blue" type="submit" id="pwBtn">Entrar</button>
+      <p class="hint"><a href="#" id="toSetup">Conectar o renovar la llave de GitHub</a> (solo quien administra la cuenta de GitHub)</p>
+    </form>
+
+    <!-- Conexión con GitHub: se hace una sola vez -->
+    <form class="panel" id="setupForm" hidden>
+      <h2>Conectar con GitHub (una sola vez)</h2>
+      <p>Para que el panel pueda guardar fotos y cambios en GitHub, pega una <strong>llave de acceso</strong>. Esto lo hace una sola vez quien administra la cuenta. Después, el equipo entra solo con la contraseña.</p>
+      <ol>
+        <li>Abre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">crear llave en GitHub</a>.</li>
+        <li>En <em>Expiration</em> elige la fecha más lejana que permita.</li>
+        <li>En <em>Repository access</em> elige <em>Only select repositories</em> y marca el repositorio del sitio.</li>
+        <li>En <em>Permissions</em> → <em>Contents</em>, elige <em>Read and write</em>.</li>
+        <li>Pulsa <em>Generate token</em>, cópiala y pégala abajo.</li>
+      </ol>
+      <div class="fields">
+        <div class="field full"><label for="gToken">Llave de GitHub (token)</label><input id="gToken" type="password" autocomplete="off" required placeholder="github_pat_…"></div>
+        <div class="field full" id="sPassWrap"><label for="sPass">Contraseña de administración</label><input id="sPass" type="password" autocomplete="off"></div>
+      </div>
+      <details class="hint">
+        <summary>Datos del repositorio (se llenan solos)</summary>
+        <div class="fields" style="margin-top:12px">
+          <div class="field"><label for="gOwner">Usuario de GitHub</label><input id="gOwner" autocomplete="off" required></div>
+          <div class="field"><label for="gRepo">Repositorio</label><input id="gRepo" autocomplete="off" required></div>
+          <div class="field"><label for="gBranch">Rama</label><input id="gBranch" value="main" autocomplete="off" required></div>
+        </div>
+      </details>
+      <p class="err" id="setupErr" hidden></p>
+      <button class="btn btn-blue" type="submit" id="setupBtn">Conectar y entrar</button>
+      <p class="hint"><a href="#" id="toPw">Volver</a></p>
+    </form>
+  </div>
+
+  <div id="aMain" class="wrap admin-body" hidden>
+    <nav class="admin-side" aria-label="Secciones">
+      <a href="#pPortada">Fotos de portada</a>
+      <a href="#pSomos">Somos iglesia</a>
+      <a href="#pEventos">Eventos</a>
+      <a href="#pEnlaces">Transmisión y redes</a>
+      <a href="#pContacto">Contacto</a>
+      <a href="#pHorarios">Horarios</a>
+      <a href="#pMensaje">Mensaje reciente</a>
+    </nav>
+    <div>
+      <p id="aNotice" class="okmsg" hidden></p>
+
+      <div class="panel" id="pPortada">
+        <div class="panel-head"><div><h2>Fotos de portada</h2><p>Pasan detrás de “Encuentra vida, fe y comunidad en Cristo”. Las fotos horizontales se ven mejor. Usa las flechas para cambiar el orden.</p></div></div>
+        <label class="drop" for="heroFile" id="heroDrop">
+          <strong>+ Subir fotos de portada</strong>
+          <span>Toca aquí o arrastra las fotos (JPG, PNG o WEBP)</span>
+          <input type="file" id="heroFile" accept="image/jpeg,image/png,image/webp" multiple hidden>
+        </label>
+        <p class="uploading" id="heroMsg" hidden></p>
+        <div class="photo-grid" id="heroGrid"></div>
+      </div>
+
+      <div class="panel" id="pSomos">
+        <div class="panel-head"><div><h2>Somos iglesia</h2><p>Fotos del carrusel “Somos iglesia”: cultos, actividades, jóvenes, damas, niños.</p></div></div>
+        <label class="drop" for="galFile" id="galDrop">
+          <strong>+ Subir fotos a “Somos iglesia”</strong>
+          <span>Toca aquí o arrastra las fotos (JPG, PNG o WEBP)</span>
+          <input type="file" id="galFile" accept="image/jpeg,image/png,image/webp" multiple hidden>
+        </label>
+        <p class="uploading" id="galMsg" hidden></p>
+        <div class="photo-grid" id="galGrid"></div>
+      </div>
+
+      <div class="panel" id="pEventos">
+        <div class="panel-head"><div><h2>Eventos</h2><p>Los eventos con fecha pasada se ocultan solos en el sitio.</p></div></div>
+        <div class="row-list" id="aEvents"></div>
+        <button class="btn btn-line add" id="aAddEvent" type="button">+ Agregar evento</button>
+      </div>
+
+      <div class="panel" id="pEnlaces">
+        <div class="panel-head"><div><h2>Transmisión y redes</h2><p>Pega el enlace completo (empieza con https://). Si dejas uno vacío, no aparece en el sitio.</p></div></div>
+        <div class="fields">
+          <div class="field full"><label for="fLive">Enlace de la transmisión en vivo</label><input id="fLive" type="url" data-k="social.live" placeholder="https://www.facebook.com/…"></div>
+          <div class="field"><label for="fFb">Facebook</label><input id="fFb" type="url" data-k="social.facebook"></div>
+          <div class="field"><label for="fIg">Instagram</label><input id="fIg" type="url" data-k="social.instagram"></div>
+          <div class="field"><label for="fYt">YouTube</label><input id="fYt" type="url" data-k="social.youtube"></div>
+          <div class="field"><label for="fTt">TikTok</label><input id="fTt" type="url" data-k="social.tiktok"></div>
+          <div class="field full"><label for="fMusic">Enlace de videos / reels</label><input id="fMusic" type="url" data-k="social.music"></div>
+        </div>
+      </div>
+
+      <div class="panel" id="pContacto">
+        <div class="panel-head"><div><h2>Contacto</h2></div></div>
+        <div class="fields">
+          <div class="field"><label for="fPhone">Teléfono / WhatsApp</label><input id="fPhone" data-k="contact.phone"></div>
+          <div class="field"><label for="fEmail">Correo</label><input id="fEmail" type="email" data-k="contact.email"></div>
+          <div class="field full"><label for="fAddr">Dirección</label><input id="fAddr" data-k="contact.address"></div>
+          <div class="field full"><label for="fMaps">Enlace de Google Maps</label><input id="fMaps" type="url" data-k="contact.maps"></div>
+        </div>
+      </div>
+
+      <div class="panel" id="pHorarios">
+        <div class="panel-head"><div><h2>Horarios</h2><p>Escribe la hora como “7:00 PM”. Puedes dejarla vacía.</p></div></div>
+        <div class="row-list" id="aSched"></div>
+        <button class="btn btn-line add" id="aAddSched" type="button">+ Agregar servicio</button>
+      </div>
+
+      <div class="panel" id="pMensaje">
+        <div class="panel-head"><div><h2>Mensaje reciente</h2></div></div>
+        <div class="fields">
+          <div class="field full"><label for="fMTitle">Título del mensaje</label><input id="fMTitle" data-k="message.title"></div>
+          <div class="field"><label for="fMSeries">Serie</label><input id="fMSeries" data-k="message.series"></div>
+          <div class="field"><label for="fMMeta">Detalle (parte, predicador)</label><input id="fMMeta" data-k="message.meta"></div>
+          <div class="field full"><label for="fMText">Resumen</label><textarea id="fMText" data-k="message.text"></textarea></div>
+          <div class="field full"><label for="fMUrl">Enlace al video</label><input id="fMUrl" type="url" data-k="message.url"></div>
+        </div>
+      </div>
+
+      <div class="savebar"><button class="btn btn-gold" id="aSave2" type="button" disabled>Guardar y publicar</button><span class="hint">Los cambios aparecen en el sitio 1 a 2 minutos después de guardar.</span></div>
+    </div>
+  </div>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
